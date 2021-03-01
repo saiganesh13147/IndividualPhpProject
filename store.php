@@ -26,11 +26,11 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="index.php">Home </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="store.php">Store <span class="sr-only">(current)</span></a>
+      <li class="nav-item active">
+        <a class="nav-link" href="store.php">Store<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="checkout.php">Checkout</a>
@@ -43,24 +43,7 @@
 <div class="container-fluid mt-4 mb-5">
     <h2 class="text-center">Store Products</h2>
 </div>
-<!-- <div class="container">
-  <div class="row">
-    <div class="col">
-    <img src="images/mobi-shop.jpg" class="img-fluid border" alt="Responsive image">
-    </div>
-    <div class="col">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    </div>
-  </div> -->
 
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
 <?php
 require("mysqli_connect.php");
 session_start();
@@ -68,17 +51,29 @@ session_start();
 $query = "select * from MobileStoreDetails";
 
 $result = mysqli_query($dbc, $query);
+echo "<div class='d-flex justify-content-around flex-row bd-highlight mb-3'>";
+ 
+while ($row = mysqli_fetch_assoc($result)) {
 
+   echo "<div class='p-4 border border-light bd-highlight'>";
+   echo "<div class='card h-100' style='width: 18rem;'>";
+   echo "<img class='card-img-top' src='". $row['imgsrc'] ."' alt='Card image cap'>";
+   echo "<div class='card-body'>";
+   echo "<h5 class='card-title'>". $row['mobilename'] ."</h5>";
+   echo "<p class='card-text'>". $row['company'] ."</p>";
+   echo "<p class='card-text font-weight-bold'>$". $row['price'] ."</p>";
+   echo "<p class='card-text'>". $row['manufactureryear'] ."</p>";
 
+   echo "<a href='checkout.php?mobileid=". $row['mobileid'] ."class='btn btn-primary'>Go to Checkout</a>";
+   echo "</div></div></div>";
 
+}
+
+echo "</div>";
 
 ?>
 
 
-  <footer>
-  <div class="container-fluid text-center p-3 fixed-bottom" style="background-color: rgba(0, 0, 0, 0.2);">
-  &#169; 2020 Copyright: Mobi Shop
-  </div>
-</footer>
+ 
   </body>
 </html>
