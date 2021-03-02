@@ -75,6 +75,17 @@ while($row = mysqli_fetch_assoc($result)){
     $quantityinstock = $row['quantitystock'];
     
 }
+if($quantityinstock == 0){
+
+    echo "<div class='container'><h4 class='text-center alert-warning'>
+    Item Out of Stock, Please Move to Store Page <h3></div>";
+    echo "<script>
+            window.setTimeout(function () {
+                window.location.href = 'store.php';
+            }, 10000)
+                    </script>";
+
+}
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $firstname = $_POST['fname'];
@@ -105,6 +116,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         mysqli_stmt_execute($istmt);
 
+        //Update to MobileStoreDetails
         $query2 = "UPDATE MobileStoreDetails SET quantitystock = ? where mobileid = ?";
 
         $ustmt = mysqli_prepare($dbc, $query2);
@@ -122,22 +134,25 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             echo "<div class='container'><p class='alert-success'>Order Placed!! Redirecting..</p></div>";
             mysqli_close($dbc);
         
-            header("Location: index.php");
+            echo "<script>
+
+            window.setTimeout(function () {
+            window.location.href = 'index.php';
+            }, 5000)
+                </script>";
 
         }
 
      }
-   
-    
 
 }
-
     
 }
 
 
 ?>
-<div class='container'>
+
+<div class='container' id='myDIV'>
 <form method='post'>
   <div class="form-group">
     <label for="fname">FirstName</label>

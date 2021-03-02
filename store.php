@@ -41,7 +41,7 @@
 </nav>
 
 <div class="container-fluid mt-4 mb-5">
-    <h2 class="text-center">Store Products</h2>
+    <h2 class="text-center">Mobi Store Products</h2>
 </div>
 
 <?php
