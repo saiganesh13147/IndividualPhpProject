@@ -45,6 +45,7 @@
 </div>
 
 <?php
+
 require("mysqli_connect.php");
 session_start();
 
@@ -64,7 +65,7 @@ while ($row = mysqli_fetch_assoc($result)) {
    echo "<p class='card-text font-weight-bold'>$". $row['price'] ."</p>";
    echo "<p class='card-text'>". $row['manufactureryear'] ."</p>";
 
-   echo "<a href='checkout.php?mobileid=". $row['mobileid'] ."class='btn btn-primary'>Go to Checkout</a>";
+   echo "<a href='checkout.php?mobileid=". $row['mobileid'] ."' class='btn btn-primary'>Go to Checkout</a>";
    echo "</div></div></div>";
 
 }
@@ -76,4 +77,5 @@ echo "</div>";
 
  
   </body>
+  
 </html>

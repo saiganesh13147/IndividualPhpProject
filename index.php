@@ -53,10 +53,11 @@
     </div>
   </div>
 
+ 
+  </body>
   <footer>
   <div class="container-fluid text-center p-3 fixed-bottom" style="background-color: rgba(0, 0, 0, 0.2);">
   &#169; 2020 Copyright: Mobi Shop
   </div>
 </footer>
-  </body>
 </html>
